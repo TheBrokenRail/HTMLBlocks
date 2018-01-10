@@ -62,12 +62,13 @@ body {
     top: 5em;
 }
 action {
-    margin: 10%;
+    height: 1.1em;
+    width: 250px;
     margin-left: 6%;
     font-size: 18px;
-    display: flex;
+    display: block;
     font-family: sans-serif;
-    align-items: center;
+    vertical-align: middle;
 }
 action:hover {
     background-color: lightgrey;

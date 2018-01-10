@@ -62,13 +62,13 @@ body {
     top: 5em;
 }
 action {
-    height: 1.1em;
+    padding: 0.5em;
+    margin: 0;
     width: 250px;
-    margin-left: 6%;
+    padding-left: 6%;
     font-size: 18px;
     display: block;
     font-family: sans-serif;
-    vertical-align: middle;
 }
 action:hover {
     background-color: lightgrey;

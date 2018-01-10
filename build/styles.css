@@ -60,10 +60,10 @@ body {
 #actions {
     position: absolute;
     top: 5em;
-    right: 6%;
 }
 action {
-    padding-right: 2%;
+    margin: 10%;
+    margin-left: 6%;
     font-size: 18px;
     display: flex;
     font-family: sans-serif;

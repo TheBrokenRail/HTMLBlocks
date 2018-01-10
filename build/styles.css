@@ -8,8 +8,8 @@ body {
     padding: 0;
     top: 0;
     right: 0;
-    left: 32%;
-    width: 68%;
+    left: 250px;
+    width: calc(100% - 250px);
     height: 100%;
 }
 #menuBar {
@@ -17,10 +17,10 @@ body {
     margin: 0;
     padding: 0;
     top: 0;
-    right: 68%;
-    width: 32%;
+    right: calc(100% - 250px);
+    width: 250px;
     height: 100%;
-    background-color: #F9F9F9;
+    background-color: #FFFFFF;
 }
 #nameBarDiv {
     position: absolute;
@@ -29,7 +29,6 @@ body {
     right: calc(100% - 250px);
     width: 250px;
     height: 100%;
-    background-color: #FFFFFF;
     vertical-align: middle;
     float: right;
 }

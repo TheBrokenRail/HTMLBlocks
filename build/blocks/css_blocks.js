@@ -166,7 +166,7 @@ ScratchBlocks.JavaScript['css_attribute'] = function (block) {
         ";";
 };
 
-ScratchBlocks.Blocks["css_selector_id"] = {
+ScratchBlocks.Blocks["css_addon_selector_id"] = {
     init: function() {
         this.isName = true;
         this.jsonInit({
@@ -206,11 +206,11 @@ ScratchBlocks.Blocks["css_selector_id"] = {
     }
 };
 
-ScratchBlocks.JavaScript["css_selector_id"] = function(block) {
+ScratchBlocks.JavaScript["css_addon_selector_id"] = function(block) {
     return ["#" + ScratchBlocks.JavaScript.valueToCode(block, 'ID')];
 };
 
-ScratchBlocks.Blocks["css_selector_class"] = {
+ScratchBlocks.Blocks["css_addon_selector_class"] = {
     init: function() {
         this.isName = true;
         this.jsonInit({
@@ -250,7 +250,7 @@ ScratchBlocks.Blocks["css_selector_class"] = {
     }
 };
 
-ScratchBlocks.JavaScript["css_selector_class"] = function(block) {
+ScratchBlocks.JavaScript["css_addon_selector_class"] = function(block) {
     return ["." + ScratchBlocks.JavaScript.valueToCode(block, 'CLASS')];
 };
 
@@ -335,5 +335,5 @@ ScratchBlocks.Blocks["css_selector_pseudo_class"] = {
 };
 
 ScratchBlocks.JavaScript["css_selector_pseudo_class"] = function(block) {
-    return [ScratchBlocks.JavaScript.valueToCode(block, 'SELECTOR') + ":" + ScratchBlocks.JavaScript.valueToCode(block, 'PSEUDO_CLASS')];
+    return [ScratchBlocks.JavaScript.valueToCode(block, 'SELECTOR') + ":" + block.getFieldValue('PSEUDO_CLASS')];
 };

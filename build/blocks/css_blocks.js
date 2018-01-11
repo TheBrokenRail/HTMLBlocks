@@ -197,6 +197,16 @@ ScratchBlocks.Blocks["css_addon_selector_id"] = {
         } else {
             this.disabled = true;
         }
+        var inputs = this.inputList;
+        for (i = 0; i < inputs.length; i++) {
+            if (inputs[i].type !== 3 && inputs[i].connection) {
+                if (inputs[i].connection.targetBlock()) {
+                    if (inputs[i].connection.targetBlock().disabled && inputs[i].connection.targetBlock().isName) {
+                        this.disabled = true;
+                    }
+                }
+            }
+        }
         if (this.getParent()) this.getParent().onchange();
         if (this.disabled) {
             if (!this.isInsertionMarker()) this.setOpacity(0.45);
@@ -240,6 +250,16 @@ ScratchBlocks.Blocks["css_addon_selector_class"] = {
             this.disabled = false;
         } else {
             this.disabled = true;
+        }
+        var inputs = this.inputList;
+        for (i = 0; i < inputs.length; i++) {
+            if (inputs[i].type !== 3 && inputs[i].connection) {
+                if (inputs[i].connection.targetBlock()) {
+                    if (inputs[i].connection.targetBlock().disabled && inputs[i].connection.targetBlock().isName) {
+                        this.disabled = true;
+                    }
+                }
+            }
         }
         if (this.getParent()) this.getParent().onchange();
         if (this.disabled) {
@@ -324,6 +344,16 @@ ScratchBlocks.Blocks["css_selector_pseudo_class"] = {
             this.disabled = false;
         } else {
             this.disabled = true;
+        }
+        var inputs = this.inputList;
+        for (i = 0; i < inputs.length; i++) {
+            if (inputs[i].type !== 3 && inputs[i].connection) {
+                if (inputs[i].connection.targetBlock()) {
+                    if (inputs[i].connection.targetBlock().disabled && inputs[i].connection.targetBlock().isName) {
+                        this.disabled = true;
+                    }
+                }
+            }
         }
         if (this.getParent()) this.getParent().onchange();
         if (this.disabled) {

@@ -127,12 +127,4 @@ window.onload = function () {
     document.getElementById("closeAbout").onclick = function () {
         document.getElementById("aboutBox").style.display = "none";
     };
-    
-    document.getElementById("preview").onclick = function () {
-        document.getElementById("previewBox").style.display = "initial";
-    };
-    
-    document.getElementById("closePreview").onclick = function () {
-        document.getElementById("previewBox").style.display = "none";
-    };
 };

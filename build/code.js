@@ -121,10 +121,10 @@ window.onload = function () {
     };
     
     document.getElementById("about").onclick = function () {
-        document.getElementById("boxOuter").style.display = "initial";
+        document.getElementById("aboutBox").style.display = "initial";
     };
     
-    document.getElementById("close").onclick = function () {
-        document.getElementById("boxOuter").style.display = "none";
+    document.getElementById("closeAbout").onclick = function () {
+        document.getElementById("aboutBox").style.display = "none";
     };
 };

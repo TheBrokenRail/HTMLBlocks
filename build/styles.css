@@ -7,9 +7,19 @@ body {
     margin: 0;
     padding: 0;
     top: 0;
-    right: 0;
+    right: 15%;
     left: 250px;
-    width: calc(100% - 250px);
+    width: calc(85% - 250px);
+    height: 100%;
+}
+#preview {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    left: calc(250px + 85%);
+    width: 15%;
     height: 100%;
 }
 #menuBar {

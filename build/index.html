@@ -6,10 +6,10 @@
 <script src="blocks/css_blocks.js"></script>
 <script src="blocks/css_name_blocks.js"></script>
 <script src="code.js"></script>
-<div class="boxOuter" style="display: none;">
+<div class="boxOuter" id="about" style="display: none;">
     <div class="boxInner">
         <div class="closeContainer">
-            <p class="close">✕</p>
+            <p class="close" id="closeAbout">✕</p>
         </div>
         <div id="textContainer">
             <p id="textBold">View The Source Code At:</p>
@@ -32,10 +32,10 @@
         </div>
     </div>
 </div>
-<div class="boxOuter" style="display: none;">
+<div class="boxOuter" id="preview" style="display: none;">
     <div class="boxInner">
         <div class="closeContainer">
-            <p class="close">✕</p>
+            <p class="close" id="closePreview">✕</p>
         </div>
         <iframe id="iframeContainer">
         </iframe>
@@ -52,6 +52,7 @@
         <action id="save">Save</action>
         <action id="load">Load</action>
         <action id="export">Export</action>
+        <action id="preview">Preview</action>
         <action id="about">About</action>
     </div>
 </div>

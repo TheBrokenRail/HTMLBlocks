@@ -73,7 +73,7 @@ action {
 action:hover {
     background-color: lightgrey;
 }
-#boxInner {
+.boxInner {
     position: absolute;
     background-color: white;
     top: 25%;
@@ -82,7 +82,7 @@ action:hover {
     height: 50%;
     border-radius: 6%;
 }
-#boxOuter {
+.boxOuter {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -94,10 +94,10 @@ action:hover {
     background-color: rgba(0,0,0,0.2);
     z-index: 200;
 }
-#closeContainer {
+.closeContainer {
     text-align: right;
 }
-#close {
+.close {
     padding: 0;
     font-size: 36pt;
     margin: 5%;

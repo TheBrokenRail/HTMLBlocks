@@ -20,6 +20,38 @@ ScratchBlocks.Blocks['html'] = {
             "colourSecondary": ScratchBlocks.Colours.html.secondary,
             "colourTertiary": ScratchBlocks.Colours.html.tertiary
         });
+    },
+    onchange: function () {
+        if (!this.disabled) {
+            this.svgGroup_.onmousemove = this.onmousemove.bind(this);
+        } else {
+            this.svgGroup_.onmousemove = null;
+        }
+        this.svgGroup_.onmouseout = this.onmouseout.bind(this);
+    },
+    onmousemove: function (e) {
+        if (window.highlightElement) {
+            window.highlightElement.parentNode.removeChild(window.highlightElement);
+            window.highlightElement = null;
+        }
+        var preview = document.getElementById("preview").contentDocument;
+        var highlight = preview.createElement("DIV");
+        highlight.style.position = "absolute";
+        highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
+        highlight.style.width = "100%";
+        highlight.style.height = "100%";
+        highlight.style.top = "0px";
+        highlight.style.left = "0px";
+        window.highlightElement = highlight;
+        preview.body.appendChild(window.highlightElement);
+        e.stopPropagation();
+    },
+    onmouseout: function (e) {
+        if (window.highlightElement) {
+            window.highlightElement.parentNode.removeChild(window.highlightElement);
+            window.highlightElement = null;
+        }
+        e.stopPropagation();
     }
 };
 

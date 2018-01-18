@@ -203,7 +203,9 @@ ScratchBlocks.Blocks['html_text'] = {
         } else {
             this.svgPath_.onmousemove = null;
         }
-        this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
+        if (this.getSurroundParent()) {
+            this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
+        }
     }
 };
 
@@ -274,7 +276,9 @@ ScratchBlocks.Blocks['html_attribute'] = {
         } else {
             this.svgPath_.onmousemove = null;
         }
-        this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
+        if (this.getSurroundParent()) {
+            this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
+        }
     }
 };
 

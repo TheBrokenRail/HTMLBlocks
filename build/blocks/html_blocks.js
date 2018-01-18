@@ -95,12 +95,13 @@ ScratchBlocks.Blocks['html_element'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled) {
-            this.svgPath_.onmouseover = this.onmouseover.bind(this);
+            this.svgPath_.onmousemove = this.onmousemove.bind(this);
         } else {
-            this.svgPath_.onmouseover = null;
+            this.svgPath_.onmousemove = null;
         }
+        this.svgPath_.onmouseout = this.onmouseout.bind(this);
     },
-    onmouseover: function () {
+    onmousemove: function () {
         if (window.highlightElement) window.highlightElement.parentNode.removeChild(window.highlightElement);
         var preview = document.getElementById("preview").contentDocument;
         var elements = preview.querySelectorAll("*");
@@ -108,7 +109,7 @@ ScratchBlocks.Blocks['html_element'] = {
             if (elements[i].getAttribute("data-block-id-debug") === this.id) {
                 var highlight = preview.createElement("DIV");
                 highlight.style.position = "absolute";
-                highlight.style.backgroundColor = "blue";
+                highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
                 highlight.style.width = elements[i].offsetWidth + "px";
                 highlight.style.height = elements[i].offsetHeight + "px";
                 var elementData = elements[i].getBoundingClientRect();
@@ -118,6 +119,9 @@ ScratchBlocks.Blocks['html_element'] = {
                 preview.body.appendChild(window.highlightElement);
             }
         }
+    },
+    onmouseout: function () {
+        if (window.highlightElement) window.highlightElement.parentNode.removeChild(window.highlightElement);
     }
 };
 
@@ -195,10 +199,11 @@ ScratchBlocks.Blocks['html_text'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled && this.getSurroundParent()) {
-            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+            this.svgPath_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
         } else {
-            this.svgPath_.onmouseover = null;
+            this.svgPath_.onmousemove = null;
         }
+        this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
     }
 };
 
@@ -265,10 +270,11 @@ ScratchBlocks.Blocks['html_attribute'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled && this.getSurroundParent()) {
-            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+            this.svgPath_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
         } else {
-            this.svgPath_.onmouseover = null;
+            this.svgPath_.onmousemove = null;
         }
+        this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
     }
 };
 

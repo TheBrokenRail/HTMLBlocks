@@ -56,6 +56,7 @@ ScratchBlocks.Blocks['html_element'] = {
         });
     },
     onchange: function () {
+        this._svgPath.onmouseover = this.onmouseover.bind(this);
         function getTop(block) {
             if (block.getSurroundParent()) {
                 return getTop(block.getSurroundParent());
@@ -87,18 +88,25 @@ ScratchBlocks.Blocks['html_element'] = {
         } else {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
+    },
+    onmouseover: function () {
+        console.log(this);
     }
 };
 
 ScratchBlocks.JavaScript['html_element'] = function (block) {
     var element = ScratchBlocks.JavaScript.valueToCode(block, 'ELEMENT');
-    var code = "var tag = 'DIV';try{document.createElement('" + 
-        element + 
-        "');tag = '" + 
-        element + 
-        "';}catch(e){}" + 
-        "element.appendChild((function (element) {" + 
-        ScratchBlocks.JavaScript.statementToCode(block, 'SUBSTACK') + 
+    var code = "var tag = 'DIV';try{document.createElement('" +
+        element +
+        "');tag = '" +
+        element +
+        "';" +
+        "}catch(e){}" +
+        "element.appendChild((function (element) {" +
+        window.previewExport ? "element.setAttribute('data-block-id-debug','" +
+        block.id +
+        "');" : "" +
+        ScratchBlocks.JavaScript.statementToCode(block, 'SUBSTACK') +
         "return element;})(document.createElement(tag)));";
     return code;
 };
@@ -124,6 +132,9 @@ ScratchBlocks.Blocks['html_text'] = {
         });
     },
     onchange: function () {
+        if (this.getSurroundParent()) {
+            this._svgPath.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+        }
         function getTop(block) {
             if (block.getSurroundParent()) {
                 return getTop(block.getSurroundParent());
@@ -189,6 +200,9 @@ ScratchBlocks.Blocks['html_attribute'] = {
         });
     },
     onchange: function () {
+        if (this.getSurroundParent()) {
+            this._svgPath.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+        }
         function getTop(block) {
             if (block.getSurroundParent()) {
                 return getTop(block.getSurroundParent());

@@ -102,7 +102,10 @@ ScratchBlocks.Blocks['html_element'] = {
         this.svgPath_.onmouseout = this.onmouseout.bind(this);
     },
     onmousemove: function () {
-        if (window.highlightElement) window.highlightElement.parentNode.removeChild(window.highlightElement);
+        if (window.highlightElement) {
+            window.highlightElement.parentNode.removeChild(window.highlightElement);
+            window.highlightElement = null;
+        }
         var preview = document.getElementById("preview").contentDocument;
         var elements = preview.querySelectorAll("*");
         for (i = 0; i < elements.length; i++) {
@@ -121,7 +124,10 @@ ScratchBlocks.Blocks['html_element'] = {
         }
     },
     onmouseout: function () {
-        if (window.highlightElement) window.highlightElement.parentNode.removeChild(window.highlightElement);
+        if (window.highlightElement) {
+            window.highlightElement.parentNode.removeChild(window.highlightElement);
+            window.highlightElement = null;
+        }
     }
 };
 

@@ -7,9 +7,9 @@ body {
     margin: 0;
     padding: 0;
     top: 0;
-    right: 15%;
+    right: 25%;
     left: 250px;
-    width: calc(85% - 250px);
+    width: calc(75% - 250px);
     height: 100%;
 }
 #preview {
@@ -18,8 +18,8 @@ body {
     padding: 0;
     top: 0;
     right: 0;
-    left: 85%;
-    width: 15%;
+    left: 75%;
+    width: 25%;
     height: 100%;
     border: none;
 }

@@ -49,6 +49,8 @@ window.onload = function () {
                         element.appendChild(style);
                     }
                 }
+                var div = document.createElement("DIV");
+                div.appendChild(element);
                 htmlText = window.html_beautify(div.innerHTML, { indent_size: 2 });
             } else {
                 throw "No HTML Code Generated!";

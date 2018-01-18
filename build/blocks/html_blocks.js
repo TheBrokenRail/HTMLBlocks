@@ -30,6 +30,12 @@ ScratchBlocks.Blocks['html'] = {
         this.svgGroup_.onmouseout = this.onmouseout.bind(this);
     },
     onmousemove: function (e) {
+        if (window.currentBlock === this.id) {
+            e.stopPropagation();
+            return;
+        } else {
+            window.currentBlock = this.id;
+        }
         if (window.highlightElement) {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
@@ -51,6 +57,7 @@ ScratchBlocks.Blocks['html'] = {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
         }
+        window.currentBlock = null;
         e.stopPropagation();
     }
 };
@@ -134,6 +141,12 @@ ScratchBlocks.Blocks['html_element'] = {
         this.svgGroup_.onmouseout = this.onmouseout.bind(this);
     },
     onmousemove: function (e) {
+        if (window.currentBlock === this.id) {
+            e.stopPropagation();
+            return;
+        } else {
+            window.currentBlock = this.id;
+        }
         if (window.highlightElement) {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
@@ -161,6 +174,7 @@ ScratchBlocks.Blocks['html_element'] = {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
         }
+        window.currentBlock = null;
         e.stopPropagation();
     }
 };

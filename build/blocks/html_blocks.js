@@ -24,7 +24,14 @@ ScratchBlocks.Blocks['html'] = {
 };
 
 ScratchBlocks.JavaScript['html'] = function (block) {
-    return "var element = document.createElement('HTML');" + 
+    var debugText = "";
+    if (window.debugExport) {
+        debugText = "element.setAttribute('data-block-id-debug','" +
+        block.id +
+        "');";
+    }
+    return "var element = document.createElement('HTML');" +
+        debugText +
         ScratchBlocks.JavaScript.statementToCode(block, 'SUBSTACK');
 };
 
@@ -56,7 +63,6 @@ ScratchBlocks.Blocks['html_element'] = {
         });
     },
     onchange: function () {
-        this.svgPath_.onmouseover = this.onmouseover.bind(this);
         function getTop(block) {
             if (block.getSurroundParent()) {
                 return getTop(block.getSurroundParent());
@@ -88,9 +94,25 @@ ScratchBlocks.Blocks['html_element'] = {
         } else {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
+        if (!this.disabled) {
+            this.svgPath_.onmouseover = this.onmouseover.bind(this);
+        } else {
+            this.svgPath_.onmouseover = null;
+        }
     },
     onmouseover: function () {
-        console.log(this);
+        if (window.highlightElement) window.highlightElement.parentNode.removeChild(window.highlightElement);
+        var preview = document.getElementById("preview").contentDocument;
+        var elements = preview.querySelectorAll("*");
+        for (i = 0; i < elements.length; i++) {
+            if (elements[i].getAttribute("data-block-id-debug") === this.id) {
+                var hightlight = document.createElement("DIV");
+                highlight.style.position = "absolute";
+                highlight.style.backgroundColor = "blue";
+                window.highlightElement = highlight;
+                preview.appendChild(window.highlightElement);
+            }
+        }
     }
 };
 
@@ -100,8 +122,8 @@ ScratchBlocks.JavaScript['html_element'] = function (block) {
     if (window.debugExport) {
         debugText = "element.setAttribute('data-block-id-debug','" +
         block.id +
-        "');"
-;    }
+        "');";
+    }
     var code = "var tag = 'DIV';try{document.createElement('" +
         element +
         "');tag = '" +
@@ -136,9 +158,6 @@ ScratchBlocks.Blocks['html_text'] = {
         });
     },
     onchange: function () {
-        if (this.getSurroundParent()) {
-            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
-        }
         function getTop(block) {
             if (block.getSurroundParent()) {
                 return getTop(block.getSurroundParent());
@@ -169,6 +188,11 @@ ScratchBlocks.Blocks['html_text'] = {
             if (!this.isInsertionMarker()) this.setOpacity(0.45);
         } else {
             if (!this.isInsertionMarker()) this.setOpacity(1);
+        }
+        if (!this.disabled && this.getSurroundParent()) {
+            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+        } else {
+            this.svgPath_.onmouseover = null;
         }
     }
 };
@@ -204,9 +228,6 @@ ScratchBlocks.Blocks['html_attribute'] = {
         });
     },
     onchange: function () {
-        if (this.getSurroundParent()) {
-            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
-        }
         function getTop(block) {
             if (block.getSurroundParent()) {
                 return getTop(block.getSurroundParent());
@@ -237,6 +258,11 @@ ScratchBlocks.Blocks['html_attribute'] = {
             if (!this.isInsertionMarker()) this.setOpacity(0.45);
         } else {
             if (!this.isInsertionMarker()) this.setOpacity(1);
+        }
+        if (!this.disabled && this.getSurroundParent()) {
+            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+        } else {
+            this.svgPath_.onmouseover = null;
         }
     }
 };

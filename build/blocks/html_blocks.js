@@ -95,13 +95,13 @@ ScratchBlocks.Blocks['html_element'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled) {
-            this.svgPath_.onmousemove = this.onmousemove.bind(this);
+            this.svgGroup_.onmousemove = this.onmousemove.bind(this);
         } else {
-            this.svgPath_.onmousemove = null;
+            this.svgGroup_.onmousemove = null;
         }
-        this.svgPath_.onmouseout = this.onmouseout.bind(this);
+        this.svgGroup_.onmouseout = this.onmouseout.bind(this);
     },
-    onmousemove: function () {
+    onmousemove: function (e) {
         if (window.highlightElement) {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
@@ -122,12 +122,14 @@ ScratchBlocks.Blocks['html_element'] = {
                 preview.body.appendChild(window.highlightElement);
             }
         }
+        e.stopPropagation();
     },
-    onmouseout: function () {
+    onmouseout: function (e) {
         if (window.highlightElement) {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
         }
+        e.stopPropagation();
     }
 };
 
@@ -205,12 +207,12 @@ ScratchBlocks.Blocks['html_text'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled && this.getSurroundParent()) {
-            this.svgPath_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
+            this.svgGroup_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
         } else {
-            this.svgPath_.onmousemove = null;
+            this.svgGroup_.onmousemove = null;
         }
         if (this.getSurroundParent()) {
-            this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
+            this.svgGroup_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
         }
     }
 };
@@ -278,12 +280,12 @@ ScratchBlocks.Blocks['html_attribute'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled && this.getSurroundParent()) {
-            this.svgPath_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
+            this.svgGroup_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
         } else {
-            this.svgPath_.onmousemove = null;
+            this.svgGroup_.onmousemove = null;
         }
         if (this.getSurroundParent()) {
-            this.svgPath_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
+            this.svgGroup_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
         }
     }
 };

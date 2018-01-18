@@ -115,7 +115,7 @@ ScratchBlocks.Blocks['html_element'] = {
                 highlight.style.top = elementData.top + "px";
                 highlight.style.left = elementData.left + "px";
                 window.highlightElement = highlight;
-                preview.appendChild(window.highlightElement);
+                preview.body.appendChild(window.highlightElement);
             }
         }
     }

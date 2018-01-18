@@ -103,7 +103,7 @@ ScratchBlocks.JavaScript['html_element'] = function (block) {
         "';" +
         "}catch(e){}" +
         "element.appendChild((function (element) {" +
-        window.previewExport ? "element.setAttribute('data-block-id-debug','" +
+        window.debugExport ? "element.setAttribute('data-block-id-debug','" +
         block.id +
         "');" : "" +
         ScratchBlocks.JavaScript.statementToCode(block, 'SUBSTACK') +

@@ -18,9 +18,10 @@ body {
     padding: 0;
     top: 0;
     right: 0;
-    left: calc(250px + 85%);
+    left: 85%;
     width: 15%;
     height: 100%;
+    border: none;
 }
 #menuBar {
     position: absolute;

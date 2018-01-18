@@ -56,7 +56,7 @@ ScratchBlocks.Blocks['html_element'] = {
         });
     },
     onchange: function () {
-        this._svgPath.onmouseover = this.onmouseover.bind(this);
+        this.svgPath_.onmouseover = this.onmouseover.bind(this);
         function getTop(block) {
             if (block.getSurroundParent()) {
                 return getTop(block.getSurroundParent());
@@ -133,7 +133,7 @@ ScratchBlocks.Blocks['html_text'] = {
     },
     onchange: function () {
         if (this.getSurroundParent()) {
-            this._svgPath.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
         }
         function getTop(block) {
             if (block.getSurroundParent()) {
@@ -201,7 +201,7 @@ ScratchBlocks.Blocks['html_attribute'] = {
     },
     onchange: function () {
         if (this.getSurroundParent()) {
-            this._svgPath.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
+            this.svgPath_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
         }
         function getTop(block) {
             if (block.getSurroundParent()) {

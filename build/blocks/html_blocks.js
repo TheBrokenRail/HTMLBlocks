@@ -106,9 +106,14 @@ ScratchBlocks.Blocks['html_element'] = {
         var elements = preview.querySelectorAll("*");
         for (i = 0; i < elements.length; i++) {
             if (elements[i].getAttribute("data-block-id-debug") === this.id) {
-                var hightlight = document.createElement("DIV");
+                var highlight = preview.createElement("DIV");
                 highlight.style.position = "absolute";
                 highlight.style.backgroundColor = "blue";
+                highlight.style.width = elements[i].offsetWidth + "px";
+                highlight.style.height = elements[i].offsetHeight + "px";
+                var elementData = elements[i].getBoundingClientRect();
+                highlight.style.top = elementData.top + "px";
+                highlight.style.left = elementData.left + "px";
                 window.highlightElement = highlight;
                 preview.appendChild(window.highlightElement);
             }

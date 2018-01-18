@@ -12,6 +12,7 @@ window.onload = function () {
             dragShadowOpacity: 0.6
         }
     });
+    
     window.workspace = workspace;
     var css = window.ScratchBlocks.Css.styleSheet_.cssRules;
     for (i = 0; i < css.length; i++) {
@@ -22,6 +23,44 @@ window.onload = function () {
     
     window.ScratchBlocks.Xml.domToWorkspace(document.getElementById('workspace'), workspace);
     workspace.scrollCenter();
+    
+    workspace.addChangeListener(function () {
+        var workspace = window.workspace;
+        var top = workspace.getTopBlocks();
+        var html = null;
+        for (i = 0; i < top.length; i++) {
+            if (top[i].type === 'html') {
+                html = top[i];
+            }
+        }
+        var css = null;
+        for (i = 0; i < top.length; i++) {
+            if (top[i].type === 'css') {
+                css = top[i];
+            }
+        }
+        var htmlText = "";
+        if (html) {
+            eval(window.ScratchBlocks.JavaScript.blockToCode(html));
+            if (element) {
+                if (css) {
+                    eval(window.ScratchBlocks.JavaScript.blockToCode(css));
+                    if (style) {
+                        element.appendChild(style);
+                    }
+                }
+                htmlText = window.html_beautify(div.innerHTML, { indent_size: 2 });
+            } else {
+                throw "No HTML Code Generated!";
+            }
+        } else {
+            throw "No HTML Block!";
+        }
+        var preview = document.getElementById("preview").contentDocument;
+        preview.open();
+        preview.writeln(htmlText);
+        preview.close();
+    });
     
     document.getElementById('save').onclick = function () {
         var name = document.getElementById('name').value;

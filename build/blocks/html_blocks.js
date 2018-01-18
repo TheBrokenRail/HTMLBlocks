@@ -96,6 +96,12 @@ ScratchBlocks.Blocks['html_element'] = {
 
 ScratchBlocks.JavaScript['html_element'] = function (block) {
     var element = ScratchBlocks.JavaScript.valueToCode(block, 'ELEMENT');
+    var debugText = "";
+    if (window.debugExport) {
+        debugText = "element.setAttribute('data-block-id-debug','" +
+        block.id +
+        "');"
+;    }
     var code = "var tag = 'DIV';try{document.createElement('" +
         element +
         "');tag = '" +
@@ -103,9 +109,7 @@ ScratchBlocks.JavaScript['html_element'] = function (block) {
         "';" +
         "}catch(e){}" +
         "element.appendChild((function (element) {" +
-        window.debugExport ? "element.setAttribute('data-block-id-debug','" +
-        block.id +
-        "');" : "" +
+        debugText +
         ScratchBlocks.JavaScript.statementToCode(block, 'SUBSTACK') +
         "return element;})(document.createElement(tag)));";
     return code;

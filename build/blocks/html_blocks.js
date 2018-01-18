@@ -23,19 +23,13 @@ ScratchBlocks.Blocks['html'] = {
     },
     onchange: function () {
         if (!this.disabled) {
-            this.svgGroup_.onmousemove = this.onmousemove.bind(this);
+            this.svgGroup_.onmouseover = this.onmouseover.bind(this);
         } else {
-            this.svgGroup_.onmousemove = null;
+            this.svgGroup_.onmouseover = null;
         }
         this.svgGroup_.onmouseout = this.onmouseout.bind(this);
     },
-    onmousemove: function (e) {
-        if (window.currentBlock === this.id) {
-            e.stopPropagation();
-            return;
-        } else {
-            window.currentBlock = this.id;
-        }
+    onmouseover: function (e) {
         if (window.highlightElement) {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
@@ -57,7 +51,6 @@ ScratchBlocks.Blocks['html'] = {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
         }
-        window.currentBlock = null;
         e.stopPropagation();
     }
 };
@@ -134,19 +127,13 @@ ScratchBlocks.Blocks['html_element'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled) {
-            this.svgGroup_.onmousemove = this.onmousemove.bind(this);
+            this.svgGroup_.onmouseover = this.onmouseover.bind(this);
         } else {
-            this.svgGroup_.onmousemove = null;
+            this.svgGroup_.onmouseover = null;
         }
         this.svgGroup_.onmouseout = this.onmouseout.bind(this);
     },
-    onmousemove: function (e) {
-        if (window.currentBlock === this.id) {
-            e.stopPropagation();
-            return;
-        } else {
-            window.currentBlock = this.id;
-        }
+    onmouseover: function (e) {
         if (window.highlightElement) {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
@@ -174,7 +161,6 @@ ScratchBlocks.Blocks['html_element'] = {
             window.highlightElement.parentNode.removeChild(window.highlightElement);
             window.highlightElement = null;
         }
-        window.currentBlock = null;
         e.stopPropagation();
     }
 };
@@ -253,9 +239,9 @@ ScratchBlocks.Blocks['html_text'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled && this.getSurroundParent()) {
-            this.svgGroup_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
+            this.svgGroup_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
         } else {
-            this.svgGroup_.onmousemove = null;
+            this.svgGroup_.onmouseover = null;
         }
         if (this.getSurroundParent()) {
             this.svgGroup_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());
@@ -326,9 +312,9 @@ ScratchBlocks.Blocks['html_attribute'] = {
             if (!this.isInsertionMarker()) this.setOpacity(1);
         }
         if (!this.disabled && this.getSurroundParent()) {
-            this.svgGroup_.onmousemove = this.getSurroundParent().onmousemove.bind(this.getSurroundParent());
+            this.svgGroup_.onmouseover = this.getSurroundParent().onmouseover.bind(this.getSurroundParent());
         } else {
-            this.svgGroup_.onmousemove = null;
+            this.svgGroup_.onmouseover = null;
         }
         if (this.getSurroundParent()) {
             this.svgGroup_.onmouseout = this.getSurroundParent().onmouseout.bind(this.getSurroundParent());

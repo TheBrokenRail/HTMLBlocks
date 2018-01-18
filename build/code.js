@@ -41,7 +41,9 @@ window.onload = function () {
         }
         var htmlText = "";
         if (html) {
+            window.debugExport = true;
             eval(window.ScratchBlocks.JavaScript.blockToCode(html));
+            window.debugExport = false;
             if (element) {
                 if (css) {
                     eval(window.ScratchBlocks.JavaScript.blockToCode(css));
@@ -125,6 +127,7 @@ window.onload = function () {
             }
         }
         if (html) {
+            window.debugExport = false;
             eval(window.ScratchBlocks.JavaScript.blockToCode(html));
             if (element) {
                 if (css) {

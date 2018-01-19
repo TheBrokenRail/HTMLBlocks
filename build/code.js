@@ -70,12 +70,16 @@ window.onload = function () {
         var div = document.createElement("DIV");
         inspect.appendChild(div);
         function displayInspect(node, div, margin) {
+            console.log("Margin: " + margin);
+            console.log(node);
             var button = document.createElement("DIV");
             button.innerHTML = "\u25BA";
             var text = document.createElement("DIV");
-            var serializer = new XMLSerializer();
-            var string = serializer.serializeToString(node);
-            text.appendChild(document.createTextNode(string.split(">")[0] + ">"));
+            var cloneNode = node.cloneNode(false);
+            var container = document.createElement("DIV");
+            container.appendChild(cloneNode);
+            text.appendChild(document.createTextNode(container.innerHTML));
+            container.removeChild(cloneNode);
             button.style.display = "inline";
             button.style.padding = "4px";
             text.style.display = "inline";
@@ -102,6 +106,7 @@ window.onload = function () {
             }
         }
         displayInspect(preview.documentElement, div, 0);
+        console.log(preview.documentElement.outerHTML);
     });
     
     document.getElementById('save').onclick = function () {

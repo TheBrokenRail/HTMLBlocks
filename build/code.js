@@ -78,7 +78,7 @@ window.onload = function () {
             }
             var container = document.createElement("DIV");
             container.appendChild(cloneNode);
-            text.innerHTML = document.createTextNode(container.innerHTML);
+            text.appendChild(document.createTextNode(container.innerHTML));
             button.style.display = "inline";
             button.style.padding = "4px";
             text.style.display = "inline";

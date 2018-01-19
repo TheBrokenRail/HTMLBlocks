@@ -64,6 +64,41 @@ window.onload = function () {
         preview.open();
         preview.writeln(htmlText);
         preview.close();
+        var inspect = document.getElementById("inspect");
+        inspect.innerHTML = "";
+        var div = document.createElement("DIV");
+        inspect.appendChild(div);
+        function displayInspect(node, div, margin) {
+            var button = document.createElement("DIV");
+            button.innerHTML = "\u25BA";
+            var text = document.createElement("DIV");
+            text.innerHTML = node.nodeName;
+            button.style.display = "inline";
+            button.style.padding = "4px";
+            text.style.display = "inline";
+            div.appendChild(button);
+            div.appendChild(text);
+            div.appendChild(document.createElement("BR"));
+            var childDiv = document.createElement("DIV");
+            childDiv.style.display = "none";
+            button.onclick = function () {
+                if (childDiv.style.display === "none") {
+                    button.innerHTML = "\u25BC";
+                    childDiv.style.display = "block";
+                } else {
+                    button.innerHTML = "\u25BA";
+                    childDiv.style.display = "none";
+                }
+            }
+            div.appendChild(childDiv);
+            div.style.marginLeft = margin + "px";
+            if (node.children.length > 0) {
+                for (i = 0; i < node.children.length; i++) {
+                    displayInspect(node.children[i], childDiv, margin + 4);
+                }
+            }
+        }
+        displayInspect(preview, div, 0);
     });
     
     document.getElementById('save').onclick = function () {

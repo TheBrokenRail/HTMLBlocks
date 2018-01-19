@@ -76,7 +76,9 @@ window.onload = function () {
             while (cloneNode.firstChild) {
                 cloneNode.removeChild(cloneNode.firstChild);
             }
-            text.innerHTML = cloneNode.outerHTML;
+            var container = document.createElement("DIV");
+            container.appendChild(cloneNode);
+            text.innerHTML = document.createTextNode(container.innerHTML);
             button.style.display = "inline";
             button.style.padding = "4px";
             text.style.display = "inline";

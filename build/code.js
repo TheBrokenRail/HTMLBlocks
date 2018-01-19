@@ -73,11 +73,9 @@ window.onload = function () {
             var button = document.createElement("DIV");
             button.innerHTML = "\u25BA";
             var text = document.createElement("DIV");
-            var cloneNode = node.cloneNode(false);
-            var container = document.createElement("DIV");
-            container.appendChild(cloneNode);
-            text.appendChild(document.createTextNode(container.innerHTML));
-            container.removeChild(cloneNode);
+            var serializer = new XMLSerializer();
+            var string = serializer.serializeToString(node);
+            text.appendChild(document.createTextNode(string.split(">")[0] + ">"));
             button.style.display = "inline";
             button.style.padding = "4px";
             text.style.display = "inline";

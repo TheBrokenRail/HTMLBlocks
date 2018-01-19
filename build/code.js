@@ -64,6 +64,7 @@ window.onload = function () {
         preview.open();
         preview.writeln(htmlText);
         preview.close();
+        console.log(htmlText);
         var inspect = document.getElementById("inspect");
         inspect.innerHTML = "";
         var div = document.createElement("DIV");
@@ -73,9 +74,6 @@ window.onload = function () {
             button.innerHTML = "\u25BA";
             var text = document.createElement("DIV");
             var cloneNode = node.cloneNode();
-            while (cloneNode.firstChild) {
-                cloneNode.removeChild(cloneNode.firstChild);
-            }
             var container = document.createElement("DIV");
             container.appendChild(cloneNode);
             text.appendChild(document.createTextNode(container.innerHTML));

@@ -73,10 +73,11 @@ window.onload = function () {
             var button = document.createElement("DIV");
             button.innerHTML = "\u25BA";
             var text = document.createElement("DIV");
-            var cloneNode = node.cloneNode();
+            var cloneNode = node.cloneNode(false);
             var container = document.createElement("DIV");
             container.appendChild(cloneNode);
             text.appendChild(document.createTextNode(container.innerHTML));
+            container.removeChild(cloneNode);
             button.style.display = "inline";
             button.style.padding = "4px";
             text.style.display = "inline";

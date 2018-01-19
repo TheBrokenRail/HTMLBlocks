@@ -56,14 +56,7 @@ ScratchBlocks.Blocks['html'] = {
 };
 
 ScratchBlocks.JavaScript['html'] = function (block) {
-    var debugText = "";
-    if (window.debugExport) {
-        debugText = "element.setAttribute('data-block-id-debug','" +
-        block.id +
-        "');";
-    }
     return "var element = document.createElement('HTML');" +
-        debugText +
         ScratchBlocks.JavaScript.statementToCode(block, 'SUBSTACK');
 };
 

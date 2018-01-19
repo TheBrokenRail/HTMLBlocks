@@ -104,7 +104,7 @@ window.onload = function () {
                 }
             }
         }
-        displayInspect(preview, div, 0);
+        displayInspect(preview.documentElement, div, 0);
     });
     
     document.getElementById('save').onclick = function () {

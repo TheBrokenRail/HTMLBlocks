@@ -143,7 +143,7 @@ window.onload = function () {
                 childDiv.appendChild(textarea);
             }
         }
-        displayInspect(preview.documentElement, div, 0, inspect);
+        displayInspect(preview.documentElement, div, 0);
     });
     
     document.getElementById('save').onclick = function () {

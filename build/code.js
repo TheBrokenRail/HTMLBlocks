@@ -107,7 +107,7 @@ window.onload = function () {
             text.style.display = "inline";
             div.appendChild(button);
             div.appendChild(text);
-            div.style.display = "block";
+            div.appendChild(document.createElement("BR"));
             div.onmouseover = function (e) {
                 div.setAttribute("class", "inspectDiv inspectDivHover");
                 e.stopPropogation();

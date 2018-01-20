@@ -64,17 +64,39 @@ window.onload = function () {
         preview.open();
         preview.writeln(htmlText);
         preview.close();
-        console.log(htmlText);
         var inspect = document.getElementById("inspect");
         inspect.innerHTML = "";
         var div = document.createElement("DIV");
         inspect.appendChild(div);
         function displayInspect(node, div, margin) {
-            console.log("Margin: " + margin);
-            console.log(node);
+            div.onmouseover = function (e) {
+                if (window.highlightElement) {
+                    window.highlightElement.parentNode.removeChild(window.highlightElement);
+                    window.highlightElement = null;
+                }
+                var highlight = preview.createElement("DIV");
+                highlight.style.position = "absolute";
+                highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
+                highlight.style.width = node.offsetWidth + "px";
+                highlight.style.height = node.offsetHeight + "px";
+                var elementData = node.getBoundingClientRect();
+                highlight.style.top = elementData.top + "px";
+                highlight.style.left = elementData.left + "px";
+                window.highlightElement = highlight;
+                preview.body.appendChild(window.highlightElement);
+                e.stopPropagation();
+            };
+            div.onmouseout = function (e) {
+                if (window.highlightElement) {
+                    window.highlightElement.parentNode.removeChild(window.highlightElement);
+                    window.highlightElement = null;
+                }
+                e.stopPropagation();
+            };
             var button = document.createElement("DIV");
             button.innerHTML = "\u25BA";
             var text = document.createElement("DIV");
+            text.setAttribute("class", "inspectText");
             var cloneNode = node.cloneNode(false);
             var container = document.createElement("DIV");
             container.appendChild(cloneNode);
@@ -87,6 +109,7 @@ window.onload = function () {
             div.appendChild(text);
             div.appendChild(document.createElement("BR"));
             var childDiv = document.createElement("DIV");
+            div.setAttribute("class", "inspectDiv");
             childDiv.style.display = "none";
             button.onclick = function () {
                 if (childDiv.style.display === "none") {
@@ -104,12 +127,17 @@ window.onload = function () {
                     displayInspect(node.children[i], childDiv, margin + 4);
                 }
             } else {
+                childDiv.setAttribute("class", "inspectDiv");
                 childDiv.style.marginLeft = (margin + 2) + "px";
+                var textarea = document.createElement("TEXTAREA");
+                textarea.value = node.innerHTML;
+                textarea.readonly = true;
+                textarea.style.border = "none";
+                textarea.setAttribute("class", "inspectText");
                 childDiv.appendChild(document.createTextNode(node.innerHTML));
             }
         }
         displayInspect(preview.documentElement, div, 0);
-        console.log(preview.documentElement.outerHTML);
     });
     
     document.getElementById('save').onclick = function () {

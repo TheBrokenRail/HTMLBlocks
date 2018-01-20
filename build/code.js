@@ -75,7 +75,11 @@ window.onload = function () {
             var button = document.createElement("DIV");
             button.innerHTML = "\u25BA";
             var text = document.createElement("DIV");
-            text.appendChild(document.createTextNode(node.nodeName));
+            var cloneNode = node.cloneNode(false);
+            var container = document.createElement("DIV");
+            container.appendChild(cloneNode);
+            text.appendChild(document.createTextNode(container.innerHTML));
+            container.removeChild(cloneNode);
             button.style.display = "inline";
             button.style.padding = "4px";
             text.style.display = "inline";
@@ -95,10 +99,13 @@ window.onload = function () {
             }
             div.appendChild(childDiv);
             div.style.marginLeft = margin + "px";
-            if (node.childNodes.length > 0) {
-                for (i = 0; i < node.childNodes.length; i++) {
-                    displayInspect(node.childNodes[i], childDiv, margin + 4);
+            if (node.children.length > 0) {
+                for (i = 0; i < node.children.length; i++) {
+                    displayInspect(node.children[i], childDiv, margin + 4);
                 }
+            } else {
+                childDiv.style.marginLeft = (margin + 2) + 'px";
+                childDiv.appendChild(document.createTextNode(node.innerHTML));
             }
         }
         displayInspect(preview.documentElement, div, 0);

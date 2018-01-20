@@ -84,6 +84,7 @@ window.onload = function () {
                 highlight.style.left = elementData.left + "px";
                 window.highlightElement = highlight;
                 preview.body.appendChild(window.highlightElement);
+                div.setAttribute("class", "inspectDiv");
                 e.stopPropagation();
             };
             div.onmouseout = function (e) {
@@ -91,6 +92,7 @@ window.onload = function () {
                     window.highlightElement.parentNode.removeChild(window.highlightElement);
                     window.highlightElement = null;
                 }
+                div.setAttribute("class", "inspectDiv inspectDivHover");
                 e.stopPropagation();
             };
             var button = document.createElement("DIV");
@@ -108,14 +110,6 @@ window.onload = function () {
             div.appendChild(button);
             div.appendChild(text);
             div.appendChild(document.createElement("BR"));
-            div.onmouseover = function (e) {
-                div.setAttribute("class", "inspectDiv inspectDivHover");
-                e.stopPropagation();
-            };
-            div.onmouseout = function (e) {
-                div.setAttribute("class", "inspectDiv");
-                e.stopPropagation();
-            };
             var childDiv = document.createElement("DIV");
             div.setAttribute("class", "inspectDiv");
             childDiv.style.display = "none";
@@ -129,7 +123,7 @@ window.onload = function () {
                 }
             }
             div.appendChild(childDiv);
-            div.style.marginLeft = margin + "px";
+            div.style.paddingLeft = margin + "px";
             if (node.children.length > 0) {
                 for (i = 0; i < node.children.length; i++) {
                     displayInspect(node.children[i], childDiv, margin + 4);

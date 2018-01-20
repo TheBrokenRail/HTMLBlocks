@@ -131,9 +131,11 @@ window.onload = function () {
                 childDiv.style.marginLeft = (margin + 2) + "px";
                 var textarea = document.createElement("TEXTAREA");
                 textarea.value = node.innerHTML;
-                textarea.readonly = true;
+                textarea.readOnly = true;
                 textarea.style.border = "none";
                 textarea.setAttribute("class", "inspectText");
+                textarea.style.width = "calc(100% - " + margin + "px)";
+                textarea.style.resize = "none";
                 childDiv.appendChild(textarea);
             }
         }

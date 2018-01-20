@@ -150,12 +150,12 @@ action:hover {
     font-family: sans-serif;
 }
 .inspectDiv {
-    background-color: #DCDCDC;
+    background-color: #F9F9F9;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 .inspectDivHover {
-    background-color: #C0C0C0;
+    background-color: #D3D3D3;
 }

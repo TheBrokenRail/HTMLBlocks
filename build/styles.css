@@ -34,6 +34,7 @@ body {
     height: 25%;
     border: none;
     background-color: #F9F9F9;
+    overflow: auto;
 }
 #menuBar {
     position: absolute;

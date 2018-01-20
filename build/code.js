@@ -134,7 +134,7 @@ window.onload = function () {
                 textarea.readonly = true;
                 textarea.style.border = "none";
                 textarea.setAttribute("class", "inspectText");
-                childDiv.appendChild(document.createTextNode(node.innerHTML));
+                childDiv.appendChild(textarea);
             }
         }
         displayInspect(preview.documentElement, div, 0);

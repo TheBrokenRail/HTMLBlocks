@@ -107,7 +107,15 @@ window.onload = function () {
             text.style.display = "inline";
             div.appendChild(button);
             div.appendChild(text);
-            div.appendChild(document.createElement("BR"));
+            div.style.display = "block";
+            div.onmouseover = function (e) {
+                div.setAttribute("class", "inspectDiv inspectDivHover");
+                e.stopPropogation();
+            };
+            div.onmouseout = function (e) {
+                div.setAttribute("class", "inspectDiv");
+                e.stopPropogation();
+            };
             var childDiv = document.createElement("DIV");
             div.setAttribute("class", "inspectDiv");
             childDiv.style.display = "none";

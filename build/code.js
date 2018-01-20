@@ -68,7 +68,7 @@ window.onload = function () {
         inspect.innerHTML = "";
         var div = document.createElement("DIV");
         inspect.appendChild(div);
-        function displayInspect(node, div, margin) {
+        function displayInspect(node, div, margin, root) {
             div.onmouseover = function (e) {
                 if (window.highlightElement) {
                     window.highlightElement.parentNode.removeChild(window.highlightElement);
@@ -122,11 +122,13 @@ window.onload = function () {
                     childDiv.style.display = "none";
                 }
             }
-            div.parentElement.appendChild(childDiv);
+            root.appendChild(childDiv);
             div.style.paddingLeft = margin + "px";
             if (node.children.length > 0) {
                 for (i = 0; i < node.children.length; i++) {
-                    displayInspect(node.children[i], childDiv, margin + 8);
+                    var itemDiv = document.createElement("DIV");
+                    childDiv.appendChild(itemDiv);
+                    displayInspect(node.children[i], itemDiv, margin + 8, root);
                 }
             } else {
                 childDiv.setAttribute("class", "inspectDiv");
@@ -141,7 +143,7 @@ window.onload = function () {
                 childDiv.appendChild(textarea);
             }
         }
-        displayInspect(preview.documentElement, div, 0);
+        displayInspect(preview.documentElement, div, 0, inspect);
     });
     
     document.getElementById('save').onclick = function () {

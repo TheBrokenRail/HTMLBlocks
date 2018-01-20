@@ -68,7 +68,7 @@ window.onload = function () {
         inspect.innerHTML = "";
         var div = document.createElement("DIV");
         inspect.appendChild(div);
-        function displayInspect(node, div, margin, root) {
+        function displayInspect(node, div, margin) {
             div.onmouseover = function (e) {
                 if (window.highlightElement) {
                     window.highlightElement.parentNode.removeChild(window.highlightElement);
@@ -106,6 +106,7 @@ window.onload = function () {
             container.removeChild(cloneNode);
             button.style.display = "inline";
             button.style.padding = "4px";
+            button.style.marginLeft = margin + "px";
             text.style.display = "inline";
             div.appendChild(button);
             div.appendChild(text);
@@ -122,8 +123,7 @@ window.onload = function () {
                     childDiv.style.display = "none";
                 }
             }
-            root.appendChild(childDiv);
-            div.style.paddingLeft = margin + "px";
+            div.appendChild(childDiv);
             if (node.children.length > 0) {
                 for (i = 0; i < node.children.length; i++) {
                     var itemDiv = document.createElement("DIV");

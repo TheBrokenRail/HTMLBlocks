@@ -126,7 +126,7 @@ window.onload = function () {
             div.style.paddingLeft = margin + "px";
             if (node.children.length > 0) {
                 for (i = 0; i < node.children.length; i++) {
-                    displayInspect(node.children[i], childDiv, margin + 4);
+                    displayInspect(node.children[i], childDiv, margin + 8);
                 }
             } else {
                 childDiv.setAttribute("class", "inspectDiv");

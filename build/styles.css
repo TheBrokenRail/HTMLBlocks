@@ -156,6 +156,6 @@ action:hover {
     -ms-user-select: none;
     user-select: none;
 }
-.inspectDiv:hover {
+.inspectDivHover {
     background-color: #C0C0C0;
 }

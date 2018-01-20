@@ -128,7 +128,7 @@ window.onload = function () {
                 for (i = 0; i < node.children.length; i++) {
                     var itemDiv = document.createElement("DIV");
                     childDiv.appendChild(itemDiv);
-                    displayInspect(node.children[i], itemDiv, margin + 8, root);
+                    displayInspect(node.children[i], itemDiv, margin + 8);
                 }
             } else {
                 childDiv.setAttribute("class", "inspectDiv");

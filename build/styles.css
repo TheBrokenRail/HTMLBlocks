@@ -33,6 +33,7 @@ body {
     width: 25%;
     height: 25%;
     border: none;
+    background-color: #DCDCDC;
 }
 #menuBar {
     position: absolute;
@@ -144,4 +145,17 @@ action:hover {
 #textBold {
     font-size: 16pt;
     font-weight: bold;
+}
+.inspectText {
+    font-family: sans-serif;
+}
+.inspectDiv {
+    background-color: #DCDCDC;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.inspectDiv:hover {
+    background-color: #C0C0C0;
 }

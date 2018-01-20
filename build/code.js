@@ -104,7 +104,7 @@ window.onload = function () {
                     displayInspect(node.children[i], childDiv, margin + 4);
                 }
             } else {
-                childDiv.style.marginLeft = (margin + 2) + 'px";
+                childDiv.style.marginLeft = (margin + 2) + "px";
                 childDiv.appendChild(document.createTextNode(node.innerHTML));
             }
         }

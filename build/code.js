@@ -84,7 +84,7 @@ window.onload = function () {
                 highlight.style.left = elementData.left + "px";
                 window.highlightElement = highlight;
                 preview.body.appendChild(window.highlightElement);
-                div.setAttribute("class", "inspectDiv");
+                div.setAttribute("class", "inspectDiv inspectDivHover");
                 e.stopPropagation();
             };
             div.onmouseout = function (e) {
@@ -92,7 +92,7 @@ window.onload = function () {
                     window.highlightElement.parentNode.removeChild(window.highlightElement);
                     window.highlightElement = null;
                 }
-                div.setAttribute("class", "inspectDiv inspectDivHover");
+                div.setAttribute("class", "inspectDiv");
                 e.stopPropagation();
             };
             var button = document.createElement("DIV");

@@ -122,7 +122,7 @@ window.onload = function () {
                     childDiv.style.display = "none";
                 }
             }
-            div.appendChild(childDiv);
+            div.parentElement.appendChild(childDiv);
             div.style.paddingLeft = margin + "px";
             if (node.children.length > 0) {
                 for (i = 0; i < node.children.length; i++) {

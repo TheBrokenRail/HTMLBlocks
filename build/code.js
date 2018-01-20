@@ -103,7 +103,7 @@ window.onload = function () {
             cloneNode.removeAttribute("data-block-id-debug");
             var container = document.createElement("DIV");
             container.appendChild(cloneNode);
-            text.appendChild(document.createTextNode(container.innerHTML.replace("</" + cloneNode.nodeName + ">", "")));
+            text.appendChild(document.createTextNode(container.innerHTML.replace(new RegExp("</" + cloneNode.nodeName + ">", "gi"), "")));
             container.removeChild(cloneNode);
             button.style.display = "inline";
             button.style.padding = "4px";

@@ -100,9 +100,10 @@ window.onload = function () {
             var text = document.createElement("DIV");
             text.setAttribute("class", "inspectText");
             var cloneNode = node.cloneNode(false);
+            cloneNode.removeAttribute("data-block-id-debug");
             var container = document.createElement("DIV");
             container.appendChild(cloneNode);
-            text.appendChild(document.createTextNode(container.innerHTML));
+            text.appendChild(document.createTextNode(container.innerHTML.replace("</" + cloneNode.nodeName + ">", "")));
             container.removeChild(cloneNode);
             button.style.display = "inline";
             button.style.padding = "4px";

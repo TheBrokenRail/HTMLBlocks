@@ -110,11 +110,11 @@ window.onload = function () {
             div.appendChild(document.createElement("BR"));
             div.onmouseover = function (e) {
                 div.setAttribute("class", "inspectDiv inspectDivHover");
-                e.stopPropogation();
+                e.stopPropagation();
             };
             div.onmouseout = function (e) {
                 div.setAttribute("class", "inspectDiv");
-                e.stopPropogation();
+                e.stopPropagation();
             };
             var childDiv = document.createElement("DIV");
             div.setAttribute("class", "inspectDiv");

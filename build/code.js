@@ -132,6 +132,8 @@ window.onload = function () {
                         childDiv.appendChild(itemDiv);
                         displayInspect(node.childNodes[i], itemDiv, margin + 8);
                     } else if (/\S/.test(node.childNodes[i])) {
+                        var itemDiv = document.createElement("DIV");
+                        childDiv.appendChild(itemDiv);
                         var textarea = document.createElement("TEXTAREA");
                         textarea.style.marginLeft = (margin + 8) + "px";
                         textarea.setAttribute("class", "inspectDiv");
@@ -141,7 +143,7 @@ window.onload = function () {
                         textarea.setAttribute("class", "inspectText");
                         textarea.style.width = "calc(100% - " + (margin + 8) + "px)";
                         textarea.style.resize = "none";
-                        childDiv.appendChild(textarea);
+                        itemDiv.appendChild(textarea);
                     }
                 }
             } else {

@@ -134,9 +134,35 @@ window.onload = function () {
                     } else if (/\S/.test(node.childNodes[i])) {
                         var itemDiv = document.createElement("DIV");
                         childDiv.appendChild(itemDiv);
+                        itemDiv.onmouseover = function (e) {
+                            if (window.highlightElement) {
+                                window.highlightElement.parentNode.removeChild(window.highlightElement);
+                                window.highlightElement = null;
+                            }
+                            var highlight = preview.createElement("DIV");
+                            highlight.style.position = "absolute";
+                            highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
+                            highlight.style.width = node.childNodes[i].offsetWidth + "px";
+                            highlight.style.height = node.childNodes[i].offsetHeight + "px";
+                            var elementData = node.childNodes[i].getBoundingClientRect();
+                            highlight.style.top = elementData.top + "px";
+                            highlight.style.left = elementData.left + "px";
+                            window.highlightElement = highlight;
+                            preview.body.appendChild(window.highlightElement);
+                            itemDiv.setAttribute("class", "inspectDiv inspectDivHover");
+                            e.stopPropagation();
+                        };
+                        itemDiv.onmouseout = function (e) {
+                            if (window.highlightElement) {
+                                window.highlightElement.parentNode.removeChild(window.highlightElement);
+                                window.highlightElement = null;
+                            }
+                            itemDiv.setAttribute("class", "inspectDiv");
+                            e.stopPropagation();
+                        };
                         var textarea = document.createElement("TEXTAREA");
                         textarea.style.marginLeft = (margin + 8) + "px";
-                        textarea.setAttribute("class", "inspectDiv");
+                        itemDiv.setAttribute("class", "inspectDiv");
                         textarea.value = node.childNodes[i].nodeValue;
                         textarea.readOnly = true;
                         textarea.style.border = "none";

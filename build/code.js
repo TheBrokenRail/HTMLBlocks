@@ -125,22 +125,12 @@ window.onload = function () {
                 }
             }
             div.appendChild(childDiv);
-            function generateMouseOver(node, i, itemDiv) {
+            function generateMouseOver(itemDiv) {
                 return function (e) {
                     if (window.highlightElement) {
                         window.highlightElement.parentNode.removeChild(window.highlightElement);
                         window.highlightElement = null;
                     }
-                    var highlight = preview.createElement("DIV");
-                    highlight.style.position = "absolute";
-                    highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
-                    highlight.style.width = node.childNodes[i].offsetWidth + "px";
-                    highlight.style.height = node.childNodes[i].offsetHeight + "px";
-                    var elementData = node.childNodes[i].getBoundingClientRect();
-                    highlight.style.top = elementData.top + "px";
-                    highlight.style.left = elementData.left + "px";
-                    window.highlightElement = highlight;
-                    preview.body.appendChild(window.highlightElement);
                     itemDiv.setAttribute("class", "inspectDiv inspectDivHover");
                     e.stopPropagation();
                 };
@@ -164,7 +154,7 @@ window.onload = function () {
                     } else if (node.childNodes[i].nodeValue.trim().length != 0) {
                         var itemDiv = document.createElement("DIV");
                         childDiv.appendChild(itemDiv);
-                        itemDiv.onmouseover = generateMouseOver(node, i, itemDiv);
+                        itemDiv.onmouseover = generateMouseOver(itemDiv);
                         itemDiv.onmouseout = generateMouseOut(itemDiv);
                         var textarea = document.createElement("TEXTAREA");
                         textarea.style.marginLeft = (margin + 8) + "px";

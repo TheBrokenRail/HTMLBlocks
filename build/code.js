@@ -166,7 +166,6 @@ window.onload = function () {
                         textarea.value = node.childNodes[i].nodeValue;
                         textarea.readOnly = true;
                         textarea.style.border = "none";
-                        textarea.setAttribute("class", "inspectText");
                         textarea.style.width = "calc(100% - " + (margin + 8) + "px)";
                         textarea.style.resize = "none";
                         itemDiv.appendChild(textarea);

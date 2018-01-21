@@ -131,14 +131,23 @@ window.onload = function () {
                         var itemDiv = document.createElement("DIV");
                         childDiv.appendChild(itemDiv);
                         displayInspect(node.childNodes[i], itemDiv, margin + 8);
-                    } else {
-                        console.log(node.childNodes[i]);
+                    } else if (!/\S/.test(node.childNodes[i])) {
+                        var textarea = document.createElement("TEXTAREA");
+                        textarea.style.marginLeft = (margin + 2) + "px";
+                        textarea.setAttribute("class", "inspectDiv");
+                        textarea.value = node.childNodes[i].nodeValue;
+                        textarea.readOnly = true;
+                        textarea.style.border = "none";
+                        textarea.setAttribute("class", "inspectText");
+                        textarea.style.width = "calc(100% - " + margin + "px)";
+                        textarea.style.resize = "none";
+                        childDiv.appendChild(textarea);
                     }
                 }
             } else {
-                childDiv.setAttribute("class", "inspectDiv");
-                childDiv.style.marginLeft = (margin + 2) + "px";
                 var textarea = document.createElement("TEXTAREA");
+                textarea.style.marginLeft = (margin + 2) + "px";
+                textarea.setAttribute("class", "inspectDiv");
                 textarea.value = node.innerHTML;
                 textarea.readOnly = true;
                 textarea.style.border = "none";

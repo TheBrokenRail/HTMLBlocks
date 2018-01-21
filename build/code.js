@@ -97,6 +97,7 @@ window.onload = function () {
             };
             var button = document.createElement("DIV");
             button.innerHTML = "\u25BA";
+            button.style.cursor = "pointer";
             var text = document.createElement("DIV");
             text.setAttribute("class", "inspectText");
             var cloneNode = node.cloneNode(false);

@@ -142,14 +142,14 @@ window.onload = function () {
                             var highlight = preview.createElement("DIV");
                             highlight.style.position = "absolute";
                             highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
-                            highlight.style.width = node.childNodes[i].offsetWidth + "px";
-                            highlight.style.height = node.childNodes[i].offsetHeight + "px";
-                            var elementData = node.childNodes[i].getBoundingClientRect();
+                            highlight.style.width = e.target.offsetWidth + "px";
+                            highlight.style.height = e.target.offsetHeight + "px";
+                            var elementData = e.target.getBoundingClientRect();
                             highlight.style.top = elementData.top + "px";
                             highlight.style.left = elementData.left + "px";
                             window.highlightElement = highlight;
                             preview.body.appendChild(window.highlightElement);
-                            itemDiv.setAttribute("class", "inspectDiv inspectDivHover");
+                            e.target.setAttribute("class", "inspectDiv inspectDivHover");
                             e.stopPropagation();
                         };
                         itemDiv.onmouseout = function (e) {
@@ -157,7 +157,7 @@ window.onload = function () {
                                 window.highlightElement.parentNode.removeChild(window.highlightElement);
                                 window.highlightElement = null;
                             }
-                            itemDiv.setAttribute("class", "inspectDiv");
+                            e.target.setAttribute("class", "inspectDiv");
                             e.stopPropagation();
                         };
                         var textarea = document.createElement("TEXTAREA");

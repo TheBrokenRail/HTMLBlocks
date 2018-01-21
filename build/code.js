@@ -125,6 +125,36 @@ window.onload = function () {
                 }
             }
             div.appendChild(childDiv);
+            function generateMouseOver(node, i, itemDiv) {
+                return function (e) {
+                    if (window.highlightElement) {
+                        window.highlightElement.parentNode.removeChild(window.highlightElement);
+                        window.highlightElement = null;
+                    }
+                    var highlight = preview.createElement("DIV");
+                    highlight.style.position = "absolute";
+                    highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
+                    highlight.style.width = node.childNodes[i].offsetWidth + "px";
+                    highlight.style.height = node.childNodes[i].offsetHeight + "px";
+                    var elementData = node.childNodes[i].getBoundingClientRect();
+                    highlight.style.top = elementData.top + "px";
+                    highlight.style.left = elementData.left + "px";
+                    window.highlightElement = highlight;
+                    preview.body.appendChild(window.highlightElement);
+                    itemDiv.setAttribute("class", "inspectDiv inspectDivHover");
+                    e.stopPropagation();
+                };
+            }
+            function generateMouseOut(itemDiv) {
+                return function (e) {
+                    if (window.highlightElement) {
+                        window.highlightElement.parentNode.removeChild(window.highlightElement);
+                        window.highlightElement = null;
+                    }
+                    itemDiv.setAttribute("class", "inspectDiv");
+                    e.stopPropagation();
+                };
+            }
             if (node.children.length > 0) {
                 for (i = 0; i < node.childNodes.length; i++) {
                     if (node.childNodes[i].nodeName !== "#text") {
@@ -134,32 +164,8 @@ window.onload = function () {
                     } else if (node.childNodes[i].nodeValue.trim().length != 0) {
                         var itemDiv = document.createElement("DIV");
                         childDiv.appendChild(itemDiv);
-                        itemDiv.onmouseover = (function (e) {
-                            if (window.highlightElement) {
-                                window.highlightElement.parentNode.removeChild(window.highlightElement);
-                                window.highlightElement = null;
-                            }
-                            var highlight = preview.createElement("DIV");
-                            highlight.style.position = "absolute";
-                            highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
-                            highlight.style.width = node.childNodes[i].offsetWidth + "px";
-                            highlight.style.height = node.childNodes[i].offsetHeight + "px";
-                            var elementData = node.childNodes[i].getBoundingClientRect();
-                            highlight.style.top = elementData.top + "px";
-                            highlight.style.left = elementData.left + "px";
-                            window.highlightElement = highlight;
-                            preview.body.appendChild(window.highlightElement);
-                            itemDiv.setAttribute("class", "inspectDiv inspectDivHover");
-                            e.stopPropagation();
-                        }).bind(this);
-                        itemDiv.onmouseout = (function (e) {
-                            if (window.highlightElement) {
-                                window.highlightElement.parentNode.removeChild(window.highlightElement);
-                                window.highlightElement = null;
-                            }
-                            itemDiv.setAttribute("class", "inspectDiv");
-                            e.stopPropagation();
-                        }).bind(this);
+                        itemDiv.onmouseover = generateMouseOver(node, i, itemDiv);
+                        itemDiv.onmouseout = generateMouseOut(itemDiv);
                         var textarea = document.createElement("TEXTAREA");
                         textarea.style.marginLeft = (margin + 8) + "px";
                         itemDiv.setAttribute("class", "inspectDiv");

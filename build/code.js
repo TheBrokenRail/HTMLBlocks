@@ -168,16 +168,19 @@ window.onload = function () {
                     }
                 }
             } else {
+                var itemDiv = document.createElement("DIV");
+                childDiv.appendChild(itemDiv);
+                itemDiv.onmouseover = generateMouseOver(itemDiv);
+                itemDiv.onmouseout = generateMouseOut(itemDiv);
                 var textarea = document.createElement("TEXTAREA");
                 textarea.style.marginLeft = (margin + 8) + "px";
-                textarea.setAttribute("class", "inspectDiv");
+                itemDiv.setAttribute("class", "inspectDiv");
                 textarea.value = node.innerHTML;
                 textarea.readOnly = true;
                 textarea.style.border = "none";
-                textarea.setAttribute("class", "inspectText");
                 textarea.style.width = "calc(100% - " + (margin + 8) + "px)";
                 textarea.style.resize = "none";
-                childDiv.appendChild(textarea);
+                itemDiv.appendChild(textarea);
             }
         }
         displayInspect(preview.documentElement, div, 0);

@@ -164,6 +164,11 @@ window.onload = function () {
                         textarea.style.border = "none";
                         textarea.style.width = "calc(100% - " + (margin + 8) + "px)";
                         textarea.style.resize = "none";
+                        textarea.style.padding = "4px";
+                        textarea.style.paddingLeft = 0;
+                        textarea.style.paddingRight = 0;
+                        textarea.style.fontFamily = "sans-serif";
+                        textarea.style.backgroundColor = "inherit";
                         itemDiv.appendChild(textarea);
                     }
                 }
@@ -180,6 +185,11 @@ window.onload = function () {
                 textarea.style.border = "none";
                 textarea.style.width = "calc(100% - " + (margin + 8) + "px)";
                 textarea.style.resize = "none";
+                textarea.style.padding = "4px";
+                textarea.style.paddingLeft = 0;
+                textarea.style.paddingRight = 0;
+                textarea.style.fontFamily = "sans-serif";
+                textarea.style.backgroundColor = "inherit";
                 itemDiv.appendChild(textarea);
             }
         }

@@ -139,7 +139,7 @@ window.onload = function () {
                         textarea.readOnly = true;
                         textarea.style.border = "none";
                         textarea.setAttribute("class", "inspectText");
-                        textarea.style.width = "calc(100% - " + margin + "px)";
+                        textarea.style.width = "calc(100% - " + (margin + 8) + "px)";
                         textarea.style.resize = "none";
                         childDiv.appendChild(textarea);
                     }
@@ -152,7 +152,7 @@ window.onload = function () {
                 textarea.readOnly = true;
                 textarea.style.border = "none";
                 textarea.setAttribute("class", "inspectText");
-                textarea.style.width = "calc(100% - " + margin + "px)";
+                textarea.style.width = "calc(100% - " + (margin + 8) + "px)";
                 textarea.style.resize = "none";
                 childDiv.appendChild(textarea);
             }

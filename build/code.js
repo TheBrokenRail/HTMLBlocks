@@ -126,10 +126,14 @@ window.onload = function () {
             }
             div.appendChild(childDiv);
             if (node.children.length > 0) {
-                for (i = 0; i < node.children.length; i++) {
-                    var itemDiv = document.createElement("DIV");
-                    childDiv.appendChild(itemDiv);
-                    displayInspect(node.children[i], itemDiv, margin + 8);
+                for (i = 0; i < node.childNodes.length; i++) {
+                    if (node.childNodes[i].nodeName !== "#text") {
+                        var itemDiv = document.createElement("DIV");
+                        childDiv.appendChild(itemDiv);
+                        displayInspect(node.childNodes[i], itemDiv, margin + 8);
+                    } else {
+                        console.log(node.childNodes[i]);
+                    }
                 }
             } else {
                 childDiv.setAttribute("class", "inspectDiv");

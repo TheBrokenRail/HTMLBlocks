@@ -131,7 +131,7 @@ window.onload = function () {
                         var itemDiv = document.createElement("DIV");
                         childDiv.appendChild(itemDiv);
                         displayInspect(node.childNodes[i], itemDiv, margin + 8);
-                    } else if (/\S/.test(node.childNodes[i])) {
+                    } else if (node.childNodes[i].nodeValue.trim().length != 0) {
                         var itemDiv = document.createElement("DIV");
                         childDiv.appendChild(itemDiv);
                         itemDiv.onmouseover = function (e) {

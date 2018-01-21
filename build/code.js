@@ -134,7 +134,7 @@ window.onload = function () {
                     } else if (node.childNodes[i].nodeValue.trim().length != 0) {
                         var itemDiv = document.createElement("DIV");
                         childDiv.appendChild(itemDiv);
-                        itemDiv.onmouseover = function (e) {
+                        itemDiv.onmouseover = (function (e) {
                             if (window.highlightElement) {
                                 window.highlightElement.parentNode.removeChild(window.highlightElement);
                                 window.highlightElement = null;
@@ -142,24 +142,24 @@ window.onload = function () {
                             var highlight = preview.createElement("DIV");
                             highlight.style.position = "absolute";
                             highlight.style.backgroundColor = "rgba(0,255,255,0.5)";
-                            highlight.style.width = e.target.offsetWidth + "px";
-                            highlight.style.height = e.target.offsetHeight + "px";
-                            var elementData = e.target.getBoundingClientRect();
+                            highlight.style.width = node.childNodes[i].offsetWidth + "px";
+                            highlight.style.height = node.childNodes[i].offsetHeight + "px";
+                            var elementData = node.childNodes[i].getBoundingClientRect();
                             highlight.style.top = elementData.top + "px";
                             highlight.style.left = elementData.left + "px";
                             window.highlightElement = highlight;
                             preview.body.appendChild(window.highlightElement);
-                            e.target.setAttribute("class", "inspectDiv inspectDivHover");
+                            itemDiv.setAttribute("class", "inspectDiv inspectDivHover");
                             e.stopPropagation();
-                        };
-                        itemDiv.onmouseout = function (e) {
+                        }).bind(this);
+                        itemDiv.onmouseout = (function (e) {
                             if (window.highlightElement) {
                                 window.highlightElement.parentNode.removeChild(window.highlightElement);
                                 window.highlightElement = null;
                             }
-                            e.target.setAttribute("class", "inspectDiv");
+                            itemDiv.setAttribute("class", "inspectDiv");
                             e.stopPropagation();
-                        };
+                        }).bind(this);
                         var textarea = document.createElement("TEXTAREA");
                         textarea.style.marginLeft = (margin + 8) + "px";
                         itemDiv.setAttribute("class", "inspectDiv");

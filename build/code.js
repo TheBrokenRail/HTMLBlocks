@@ -100,6 +100,7 @@ window.onload = function () {
             button.style.cursor = "pointer";
             var text = document.createElement("DIV");
             text.setAttribute("class", "inspectText");
+            text.style.padding = "4px";
             var cloneNode = node.cloneNode(false);
             cloneNode.removeAttribute("data-block-id-debug");
             var container = document.createElement("DIV");
@@ -196,6 +197,8 @@ window.onload = function () {
             var closeText = document.createElement("DIV");
             closeText.setAttribute("class", "inspectText");
             closeText.appendChild(document.createTextNode("</" + node.nodeName.toLowerCase() + ">"));
+            closeText.style.marginLeft = margin + "px";
+            closeText.style.padding = "4px";
             childDiv.appendChild(closeText);
         }
         displayInspect(preview.documentElement, div, 0);

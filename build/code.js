@@ -193,6 +193,10 @@ window.onload = function () {
                 textarea.style.backgroundColor = "inherit";
                 itemDiv.appendChild(textarea);
             }
+            var closeText = document.createElement("DIV");
+            closeText.setAttribute("class", "inspectText");
+            closeText.appendChild(document.createTextNode("</" + node.nodeName + ">"));
+            childDiv.appendChild(closeText);
         }
         displayInspect(preview.documentElement, div, 0);
     });

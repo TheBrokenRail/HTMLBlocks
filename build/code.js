@@ -101,6 +101,7 @@ window.onload = function () {
             var text = document.createElement("DIV");
             text.setAttribute("class", "inspectText");
             text.style.padding = "4px";
+            text.style.paddingLeft = 0;
             var cloneNode = node.cloneNode(false);
             cloneNode.removeAttribute("data-block-id-debug");
             var container = document.createElement("DIV");
@@ -199,6 +200,7 @@ window.onload = function () {
             closeText.appendChild(document.createTextNode("</" + node.nodeName.toLowerCase() + ">"));
             closeText.style.marginLeft = margin + "px";
             closeText.style.padding = "4px";
+            closeText.style.display = "inline";
             childDiv.appendChild(closeText);
         }
         displayInspect(preview.documentElement, div, 0);

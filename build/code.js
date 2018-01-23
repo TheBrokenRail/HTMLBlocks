@@ -195,7 +195,7 @@ window.onload = function () {
             }
             var closeText = document.createElement("DIV");
             closeText.setAttribute("class", "inspectText");
-            closeText.appendChild(document.createTextNode("</" + node.nodeName + ">"));
+            closeText.appendChild(document.createTextNode("</" + node.nodeName.toLowerCase() + ">"));
             childDiv.appendChild(closeText);
         }
         displayInspect(preview.documentElement, div, 0);

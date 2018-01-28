@@ -1,4 +1,4 @@
-# HTMLBlocks
+# HTMLBlocks [![Build Status](https://travis-ci.org/TheBrokenRail/HTMLBlocks.svg?branch=master)](https://travis-ci.org/TheBrokenRail/HTMLBlocks)
 
 ## How To Build
 

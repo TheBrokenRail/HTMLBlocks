@@ -1,0 +1,162 @@
+body {
+    overflow: hidden;
+    margin: 0;
+}
+#blocks {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 25%;
+    left: 250px;
+    width: calc(75% - 250px);
+    height: 100%;
+}
+#preview {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    left: 75%;
+    width: 25%;
+    height: 75%;
+    border: none;
+}
+#inspect {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 75%;
+    right: 0;
+    left: 75%;
+    width: 25%;
+    height: 25%;
+    border: none;
+    background-color: #F9F9F9;
+    overflow: auto;
+}
+#menuBar {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: calc(100% - 250px);
+    width: 250px;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+#nameBarDiv {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    right: calc(100% - 250px);
+    width: 250px;
+    height: 5em;
+    vertical-align: middle;
+    float: right;
+}
+#name {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-bottom-color: lightgrey;
+    border-bottom-style: solid;
+    font-size: 18px;
+    text-align: center;
+}
+#name:focus {
+    outline: none;
+    border: none;
+    border-bottom-color: grey;
+    border-bottom-style: solid;
+}
+#container {
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    bottom: 25%;
+    left: 10%;
+    width: 80%;
+    height: 50%;
+    vertical-align: middle;
+}
+#actions {
+    position: absolute;
+    top: 5em;
+}
+action {
+    padding: 0.5em;
+    margin: 0;
+    width: 250px;
+    padding-left: 6%;
+    font-size: 18px;
+    display: block;
+    font-family: sans-serif;
+}
+action:hover {
+    background-color: lightgrey;
+}
+.boxInner {
+    position: absolute;
+    background-color: white;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 6%;
+}
+.boxOuter {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 200;
+}
+.closeContainer {
+    text-align: right;
+}
+.close {
+    padding: 0;
+    font-size: 36pt;
+    margin: 5%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    font-family: sans-serif;
+}
+#textContainer {
+    text-align: center;
+    margin: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: sans-serif;
+    list-style-position: inside;
+    vertical-align: middle;
+    overflow: auto;
+    height: 70%;
+}
+#text {
+    font-size: 12pt;
+}
+#textBold {
+    font-size: 16pt;
+    font-weight: bold;
+}
+.inspectText {
+    font-family: sans-serif;
+}
+.inspectDiv {
+    background-color: #F9F9F9;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.inspectDivHover {
+    background-color: #D3D3D3;
+}

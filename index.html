@@ -1,0 +1,147 @@
+<meta charset="UTF-8">
+<script src="bundle.js"></script>
+<script src="blocks/common_blocks.js"></script>
+<script src="blocks/html_blocks.js"></script>
+<script src="blocks/html_name_blocks.js"></script>
+<script src="blocks/css_blocks.js"></script>
+<script src="blocks/css_name_blocks.js"></script>
+<script src="code.js"></script>
+<div class="boxOuter" id="aboutBox" style="display: none;">
+    <div class="boxInner">
+        <div class="closeContainer">
+            <p class="close" id="closeAbout">✕</p>
+        </div>
+        <div id="textContainer">
+            <p id="textBold">View The Source Code At:</p>
+            <p id="text"><a href="https://github.com/TheBrokenRail/HTMLBlocks">https://github.com/TheBrokenRail/HTMLBlocks</a></p>
+            <p id="textBold">Blockly-Based Frontend At:</p>
+            <p id="text"><a href="https://github.com/LLK/scratch-blocks">https://github.com/LLK/scratch-blocks</a></p>
+            <p id="textBold">NPM Modules Used:</p>
+            <ul id="text">
+                <li>scratch-blocks</li>
+                <li>js-beautify</li>
+                <li>xml-js</li>
+                <li>browserify</li>
+                <li>ncp</li>
+            </ul>
+            <p id="textBold">Fallbacks:</p>
+            <ul id="text">
+                <li>If You Try To Set An Invalid Attribute Name It Will Be Skipped</li>
+                <li>If You Try To Create An Invalid Element It Will Create A DIV Element</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="blocks"></div>
+<iframe id="preview"></iframe>
+<div id="inspect"></div>
+<div id="menuBar">
+    <div id="nameBarDiv">
+        <div id="container">
+            <input id="name" value="Untitled">
+        </div>
+    </div><br />
+    <div id="actions">
+        <action id="save">Save</action>
+        <action id="load">Load</action>
+        <action id="export">Export</action>
+        <action id="about">About</action>
+    </div>
+</div>
+<link rel="stylesheet" href="styles.css">
+<xml id="toolbox" style="display: none">
+    <category name="HTML" colour="#FFAB19" secondaryColour="#CF8B17">
+        <block type="html_element">
+            <value name="ELEMENT">
+                <shadow type="text">
+                    <field name="TEXT">p</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="html_text">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+        <block type="html_attribute">
+            <value name="ATTRIBUTE">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+    <category name="HTML Names" colour="#FFAB19" secondaryColour="#CF8B17">
+        <label text="Elements"></label>
+        <block type="html_name_p"></block>
+        <block type="html_name_a"></block>
+        <block type="html_name_img"></block>
+        <block type="html_name_iframe"></block>
+        <label text="Attributes"></label>
+        <block type="html_name_href"></block>
+        <block type="html_name_id"></block>
+        <block type="html_name_src"></block>
+        <block type="html_name_class"></block>
+        <block type="html_name_style"></block>
+    </category>
+    <category name="CSS" colour="#9966FF" secondaryColour="#774DCB">
+        <block type="css_selector">
+            <value name="SELECTOR">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+        <block type="css_attribute">
+            <value name="ATTRIBUTE">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+        <block type="css_addon_selector_id">
+            <value name="ID">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+        <block type="css_addon_selector_class">
+            <value name="CLASS">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+        <block type="css_selector_pseudo_class">
+            <value name="SELECTOR">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+    <category name="CSS Names" colour="#9966FF" secondaryColour="#774DCB">
+        <block type="css_name_font_size"></block>
+        <block type="css_name_color"></block>
+        <block type="css_name_background_color"></block>
+        <block type="css_name_width"></block>
+        <block type="css_name_height"></block>
+    </category>
+</xml>
+<xml xmlns="http://www.w3.org/1999/xhtml" id="workspace">
+    <block type="html" x="-100" y="0" deletable="false"></block>
+    <block type="css" x="100" y="0" deletable="false"></block>
+</xml>
